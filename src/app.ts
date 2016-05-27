@@ -6,10 +6,10 @@ import { Footer } from './components/footer/index';
 import { Home } from './components/home/index';
 import { Gallery } from './components/gallery/index';
 @Component({
-    selector: 'my-app',
+    selector: 'mn-app',
     template: `
         <header></header>
-        <router-outlet></router-outlet>
+        <div class="container"><router-outlet></router-outlet></div>
         <footer></footer>
     `,
     directives: [ROUTER_DIRECTIVES, Header, Footer],

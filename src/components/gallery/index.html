@@ -1,3 +1,8 @@
-<div>
-    <h1>This is content of Gallery page</h1>
+<div class="mn-gallery row">
+    <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let image of images; let i = index">
+        <a (click)="open(i)">
+            <img class="img-responsive mn-gallery-img" src="{{ image.thumbnail }}"/>
+        </a>
+    </div>
 </div>
+<image-viewer></image-viewer>
