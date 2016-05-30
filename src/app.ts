@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
+import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { Header } from './components/header/index';
 import { Footer } from './components/footer/index';
@@ -35,4 +36,4 @@ import { Gallery } from './components/gallery/index';
 class AppComponent {
 }
 
-bootstrap(AppComponent);
+bootstrap(AppComponent, [ MODAL_BROWSER_PROVIDERS ]);

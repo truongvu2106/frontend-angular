@@ -1,76 +1,48 @@
 import { Component } from '@angular/core';
+import { DialogRef, ModalComponent } from 'angular2-modal';
+import { BSModalContext } from 'angular2-modal/plugins/bootstrap';
 declare var $: any;
+
+export class ImageViewerData extends BSModalContext {
+    constructor(public index: number, public images: any) {
+        super();
+    }
+}
 
 @Component({
   selector: 'image-viewer',
   templateUrl: 'src/components/imageViewer/index.html'
 })
 
-export class ImageViewer {
-    waiting: any;
+export class ImageViewer implements ModalComponent<ImageViewerData> {
+    context: ImageViewerData;
     currentIndex: any;
+    currentImage: any;
     imagesList: any[];
-    constructor() {
-        this.waiting = false;
-        this.currentIndex = 0;
-        this.imagesList = [];
+    constructor(public dialog: DialogRef<ImageViewerData>) {
+        dialog.context.isBlocking = false;
+        this.context = dialog.context;
+        this.currentIndex = this.context.index;
+        this.imagesList = this.context.images;
+        this.currentImage = this.imagesList[this.currentIndex];
     }
-    open(index: any, images: any) {
-        this.currentIndex = index;
-        this.imagesList = images;
-        var added = this.createImage(this.imagesList[this.currentIndex].thumbnail);
-        $('image-viewer').find('.mn-image-container').html(added);
-        $('image-viewer').find('.modal').modal();
+    close() {
+        this.dialog.close();
     }
     goNextImage() {
-        if (this.waiting) {
-            return;
+        var self = this;
+        self.currentIndex++;
+        if (self.currentIndex >= self.imagesList.length) {
+            self.currentIndex = 0;
         }
-        this.waiting = true;
-        this.currentIndex++;
-        if (this.currentIndex >= this.imagesList.length) {
-            this.currentIndex = 0;
-        }
-        var tmp = $('image-viewer').find('.mn-image-container').find('img');
-        tmp.removeClass('active');
-        tmp.addClass('left');
-        var added = this.createImage(this.imagesList[this.currentIndex].thumbnail)
-            .addClass('right').hide();
-        setTimeout(function() {
-            tmp.remove();
-            $('image-viewer').find('.mn-image-container').append(added);
-            added.show();
-            added.removeClass('right');
-            added.addClass('active');
-            this.waiting = false;
-        }, 500);
+        self.currentImage = self.imagesList[self.currentIndex];
     }
     goPrevImage() {
-        if (this.waiting) {
-            return;
+        var self = this;
+        self.currentIndex--;
+        if (self.currentIndex < 0) {
+            self.currentIndex = self.imagesList.length - 1;
         }
-        this.waiting = true;
-        this.currentIndex--;
-        if (this.currentIndex < 0) {
-            this.currentIndex = this.imagesList.length - 1;
-        }
-        var tmp = $('image-viewer').find('.mn-image-container').find('img');
-        tmp.removeClass('active');
-        tmp.addClass('right');
-        var added = this.createImage(this.imagesList[this.currentIndex].thumbnail)
-            .addClass('left').hide();
-        $('image-viewer').find('.mn-image-container').append(added);
-        setTimeout(function() {
-            tmp.remove();
-            added.show();
-            added.removeClass('left');
-            added.addClass('active');
-            this.waiting = false;
-        }, 500);
-    }
-    createImage(imgUrl) {
-        return $('<img>').attr({
-            'src': imgUrl
-        }).on('click', this.goNextImage);
+        self.currentImage = self.imagesList[self.currentIndex];
     }
 }

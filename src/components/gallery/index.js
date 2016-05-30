@@ -12,31 +12,35 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var index_1 = require('../imageViewer/index');
 var image_service_1 = require('../../services/image.service');
+var bootstrap_1 = require('angular2-modal/plugins/bootstrap');
 var Gallery = (function () {
-    function Gallery(imageService) {
+    function Gallery(modal, viewContainer, imageService) {
+        this.modal = modal;
         this.imageService = imageService;
-        this.imageViewer = new index_1.ImageViewer();
+        this.images = [];
         console.info('Gallery Component Mounted Successfully');
+        modal.defaultViewContainer = viewContainer;
     }
     Gallery.prototype.ngOnInit = function () {
         var _this = this;
         this.imageService.getImages()
-            .then(function (images) { return _this.images = images; })
-            .catch(function (err) { return console.error(err); });
+            .then(function (images) { _this.images = images; })
+            .catch(function (err) { console.error(err); });
     };
     Gallery.prototype.open = function (index) {
         console.log("Open image: ");
         console.log(this.images[index]);
-        this.imageViewer.open(index, this.images);
+        // this.imageViewer.open(index, this.images);
+        this.modal.open(index_1.ImageViewer, new index_1.ImageViewerData(index, this.images));
     };
     Gallery = __decorate([
         core_1.Component({
             selector: 'gallery',
             templateUrl: 'src/components/gallery/index.html',
-            directives: [common_1.NgFor, index_1.ImageViewer],
-            providers: [image_service_1.ImageService]
+            directives: [common_1.NgFor],
+            providers: [image_service_1.ImageService, bootstrap_1.BS_MODAL_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [image_service_1.ImageService])
+        __metadata('design:paramtypes', [bootstrap_1.Modal, core_1.ViewContainerRef, image_service_1.ImageService])
     ], Gallery);
     return Gallery;
 }());

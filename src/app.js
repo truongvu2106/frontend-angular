@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+var platform_browser_1 = require('angular2-modal/platform-browser');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var index_1 = require('./components/header/index');
 var index_2 = require('./components/footer/index');
@@ -44,5 +45,5 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-platform_browser_dynamic_1.bootstrap(AppComponent);
+platform_browser_dynamic_1.bootstrap(AppComponent, [platform_browser_1.MODAL_BROWSER_PROVIDERS]);
 //# sourceMappingURL=app.js.map
