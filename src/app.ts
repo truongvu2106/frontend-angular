@@ -14,10 +14,7 @@ import { Blog } from './components/blog/index';
         <div class="container"><router-outlet></router-outlet></div>
         <footer></footer>
     `,
-    directives: [ ROUTER_DIRECTIVES, Header, Footer ],
-    providers: [
-        ROUTER_PROVIDERS
-    ]
+    directives: [ ROUTER_DIRECTIVES, Header, Footer ]
 })
 
 @RouteConfig([
@@ -33,7 +30,7 @@ import { Blog } from './components/blog/index';
         component: Gallery
     },
     {
-        path: '/blog',
+        path: '/blog/...',
         name: 'Blog',
         component: Blog
     }
@@ -42,4 +39,4 @@ import { Blog } from './components/blog/index';
 class AppComponent {
 }
 
-bootstrap(AppComponent, [ MODAL_BROWSER_PROVIDERS ]);
+bootstrap(AppComponent, [ROUTER_PROVIDERS, MODAL_BROWSER_PROVIDERS]);

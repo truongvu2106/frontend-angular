@@ -1,27 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { BlogService } from '../../services/blog.service';
-import { MNPanel } from '../mnPanel/index';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { PopularBlogs } from './popularBlogs/index';
+import { BlogDetail } from './detail/index';
+import { BlogsList } from './list/index';
 
 @Component({
     selector: 'blog',
     templateUrl: 'src/components/blog/index.html',
-    directives: [NgFor, MNPanel],
-    providers: [ BlogService ]
+    directives: [ PopularBlogs, ROUTER_DIRECTIVES ]
 })
 
+@RouteConfig([
+    {
+        path: '/',
+        name: 'BlogsList',
+        component: BlogsList,
+        useAsDefault: true
+    }, {
+        path: '/:id',
+        name: 'BlogDetail',
+        component: BlogDetail
+    }
+])
 
 export class Blog {
-    blogs = [];
 
-    constructor(private blogService: BlogService) {
+    constructor() {
         console.info('Blog Component Mounted Successfully');
-    }
-
-    ngOnInit() {
-        this.blogService.getBlogs()
-            .then((blogs) => { this.blogs = blogs; })
-            .catch((err) => { console.error(err); });
     }
 
 }
