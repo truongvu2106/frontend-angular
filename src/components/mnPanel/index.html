@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4>{{title}}</h4>
+        <hr>
+        <div class="list-unstyled" *ngIf="typeOf(contents) === 'object'">
+            <div *ngFor="let item of contents" class="row mn-margin-bottom-10 mn-padding-left-5 mn-padding-right-5">
+                <div class="col-sm-3 mn-padding-5">
+                    <img class="img-responsive" src="{{item.thumbnail}}"/>
+                </div>
+                <div class="col-sm-9 mn-padding-5">
+                    <div><a href="#">{{item.title}}</a></div>
+                    <small>{{item.createdOnDate}}</small>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="typeOf(contents) === 'string'">
+            <div class="col-sm-12">
+                {{contents}}
+            </div>
+        </div>
+    </div>
+</div>

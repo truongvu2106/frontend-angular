@@ -1,4 +1,4 @@
-<div class="mn-gallery row">
+<div id="mn-gallery" class="mn-gallery row">
     <div class="col-md-3 col-sm-4 col-xs-6" *ngFor="let image of images; let i = index">
         <a (click)="open(i)">
             <img class="img-responsive mn-gallery-img" src="{{ image.thumbnail }}"/>

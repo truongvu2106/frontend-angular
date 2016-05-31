@@ -1,10 +1,39 @@
+body {
+  font-family: Arial, Tahoma, Verdana, serif;
+}
 #mn-app .navbar-default .navbar-nav > li > a.router-link-active,
 #mn-app .navbar-default .navbar-nav > li > a.router-link-active:focus,
 #mn-app .navbar-default .navbar-nav > li > a.router-link-active:hover {
   background-color: #ededed;
 }
+#mn-app .mn-padding-5 {
+  padding: 5px;
+}
+#mn-app .mn-padding-left-5 {
+  padding-left: 5px;
+}
+#mn-app .mn-padding-right-5 {
+  padding-right: 5px;
+}
+#mn-app .mn-padding-top-5 {
+  padding: 5px;
+}
+#mn-app .mn-padding-bottom-5 {
+  padding: 5px;
+}
+#mn-app .mn-margin-bottom-10 {
+  margin-bottom: 10px;
+}
 
-.mn-gallery-img {
+#blog .mn-title {
+  font-size: 1.6em;
+}
+#blog .mn-image {
+  height: 100px;
+  width: 130px;
+}
+
+#mn-gallery .mn-gallery-img {
   filter: gray;
   /* IE6-9 */
   -webkit-filter: grayscale(0.75);
@@ -16,7 +45,7 @@
   width: 100%;
   height: 200px;
 }
-.mn-gallery-img:hover {
+#mn-gallery .mn-gallery-img:hover {
   filter: none;
   /* IE6-9 */
   -webkit-filter: grayscale(0);

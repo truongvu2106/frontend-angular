@@ -32,9 +32,6 @@ export class Gallery implements OnInit {
     }
 
     open(index) {
-        console.log("Open image: ");
-        console.log(this.images[index]);
-        // this.imageViewer.open(index, this.images);
         this.modal.open(ImageViewer, new ImageViewerData(index, this.images));
     }
 }

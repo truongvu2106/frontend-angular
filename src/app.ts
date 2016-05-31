@@ -6,6 +6,7 @@ import { Header } from './components/header/index';
 import { Footer } from './components/footer/index';
 import { Home } from './components/home/index';
 import { Gallery } from './components/gallery/index';
+import { Blog } from './components/blog/index';
 @Component({
     selector: 'mn-app',
     template: `
@@ -13,7 +14,7 @@ import { Gallery } from './components/gallery/index';
         <div class="container"><router-outlet></router-outlet></div>
         <footer></footer>
     `,
-    directives: [ROUTER_DIRECTIVES, Header, Footer],
+    directives: [ ROUTER_DIRECTIVES, Header, Footer ],
     providers: [
         ROUTER_PROVIDERS
     ]
@@ -30,6 +31,11 @@ import { Gallery } from './components/gallery/index';
         path: '/gallery',
         name: 'Gallery',
         component: Gallery
+    },
+    {
+        path: '/blog',
+        name: 'Blog',
+        component: Blog
     }
 ])
 
