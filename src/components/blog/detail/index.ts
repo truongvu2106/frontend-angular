@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { RouteParams } from '@angular/router-deprecated';
+import { Component } from '@angular/core';
+import { RouteSegment, Router, OnActivate } from '@angular/router';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({
@@ -9,16 +9,14 @@ import { BlogService } from '../../../services/blog.service';
 })
 
 
-export class BlogDetail implements OnInit {
+export class BlogDetail implements OnActivate {
     blogDetail = {};
-
-    constructor(private blogService: BlogService, private routeParams: RouteParams) {
+    constructor(private blogService: BlogService, private router: Router) {
         console.info('Blog Detail Component Mounted Successfully');
     }
 
-    ngOnInit() {
-        let id = this.routeParams.get('id');
-
+    routerOnActivate(curr: RouteSegment) {
+        let id = curr.getParam('id');
         this.blogService.getBlog(id)
             .then((blogDetail) => {
                 this.blogDetail = blogDetail;
