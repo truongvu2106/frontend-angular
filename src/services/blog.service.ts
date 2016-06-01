@@ -6,7 +6,7 @@ export class BlogService {
         return Promise.resolve(items);
     }
     getBlog(id) {
-        return Promise.resolve(items[0]);
+        return Promise.resolve(items[id]);
     }
 }
 

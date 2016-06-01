@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { BlogService } from '../../../services/blog.service';
-import { MNPanel } from '../../mnPanel/index';
 
 @Component({
     selector: 'popular-blogs',
     templateUrl: 'src/components/blog/popularBlogs/index.html',
-    directives: [ MNPanel ],
+    directives: [ ROUTER_DIRECTIVES ],
     providers: [ BlogService ]
 })
 

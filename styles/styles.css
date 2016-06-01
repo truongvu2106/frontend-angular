@@ -28,6 +28,9 @@ body {
 #blog .mn-title {
   font-size: 1.6em;
 }
+#blog .mn-content {
+  font-size: 1.2em;
+}
 #blog .mn-image {
   height: 100px;
   width: 130px;
