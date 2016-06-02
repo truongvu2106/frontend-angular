@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: 'src/components/home/index.html'
 })
 
-
 export class Home {
 
   constructor() {

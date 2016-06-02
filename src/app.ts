@@ -7,6 +7,8 @@ import { Footer } from './components/footer/index';
 import { Home } from './components/home/index';
 import { Gallery } from './components/gallery/index';
 import { Blog } from './components/blog/index';
+import { SignIn } from './components/signin/index';
+
 @Component({
     selector: 'mn-app',
     template: `
@@ -33,6 +35,10 @@ import { Blog } from './components/blog/index';
     {
         path: 'blog',
         component: Blog
+    },
+    {
+        path: 'sign-in',
+        component: SignIn
     }
 ])
 
