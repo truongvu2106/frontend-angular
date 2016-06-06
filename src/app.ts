@@ -8,6 +8,7 @@ import { Home } from './components/home/index';
 import { Gallery } from './components/gallery/index';
 import { Blog } from './components/blog/index';
 import { SignIn } from './components/signin/index';
+import { Admin } from './components/admin/index';
 
 @Component({
     selector: 'mn-app',
@@ -39,6 +40,10 @@ import { SignIn } from './components/signin/index';
     {
         path: 'sign-in',
         component: SignIn
+    },
+    {
+        path: 'admin',
+        component: Admin
     }
 ])
 
