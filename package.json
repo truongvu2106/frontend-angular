@@ -28,7 +28,8 @@
     "zone.js": "^0.6.12",
     "angular2-in-memory-web-api": "0.0.7",
     "bootstrap": "^3.3.6",
-    "angular2-modal": "^1.0.1"
+    "angular2-modal": "^1.0.1",
+    "ng2-cookies": "^0.1.9"
   },
   "devDependencies": {
     "concurrently": "^2.0.0",

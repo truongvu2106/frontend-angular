@@ -12,23 +12,25 @@ import { AuthService } from '../../services/auth.service';
 
 export class SignIn {
     credentials: any
-    signinError: string
+    signInError: string;
     constructor(private authService: AuthService, private router: Router) {
         console.info('Sign In Component Mounted Successfully');
         this.credentials = {};
+        this.signInError = '';
     }
 
     signIn = function() {
         var self = this;
         self.authService.authenticate(self.credentials)
-        .then(function() {
-            // Authenticate successful.
-            self.router.navigate(['admin']);
-        },
-        function(error) {
-            // Authenticate fail.
-            self.signInError = error;
-        });
+        .then(
+            function() {
+                // Authenticate successful.
+                self.router.navigate(['admin']);
+            },
+            function(error) {
+                // Authenticate fail.
+                self.signInError = error;
+            });
     };
 
 }
