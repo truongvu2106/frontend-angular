@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, provide } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
-import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy, Location } from '@angular/common';
+import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router } from '@angular/router';
+import { LocationStrategy, PathLocationStrategy, Location } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 // Add the RxJS Observable operators we need in this app.
 import './rxjs-operators';
@@ -53,7 +53,10 @@ import { Admin } from './components/admin/index';
 ])
 
 class AppComponent {
-    constructor() {
+    constructor(private router: Router) {
+        router.changes.subscribe(function(event) {
+            console.log("changed successful");
+        });
     }
 }
 
@@ -61,5 +64,6 @@ bootstrap(AppComponent, [
     ROUTER_PROVIDERS,
     HTTP_PROVIDERS,
     MODAL_BROWSER_PROVIDERS,
-    API
+    API,
+    provide(LocationStrategy, { useClass: PathLocationStrategy })
 ]);
