@@ -1,11 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router-deprecated';
 import { Cookie } from 'ng2-cookies';
 import { API } from './api.service';
 
 @Injectable()
 export class AuthService {
-    constructor(private api: API) { }
+    public isLoggedIn: EventEmitter<boolean>;
+    constructor(private api: API, private router: Router) {
+        this.isLoggedIn = new EventEmitter();
+    }
 
     /* Private */
 
@@ -24,6 +29,7 @@ export class AuthService {
                 function(data) {
                     self._setAccessToken(data.token);
                     self._setAccount(data.account);
+                    self.isLoggedIn.emit(self.authenticated());
                     return data;
                 }
             );
@@ -44,6 +50,11 @@ export class AuthService {
         // Remove cookies.
         Cookie.delete('account');
         Cookie.delete('accessToken');
-    };
+        this.isLoggedIn.emit(this.authenticated());
+    }
+
+    checkLoggedIn() {
+        return Observable.of(this.authenticated());
+    }
 
 }

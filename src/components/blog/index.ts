@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Routes, ROUTER_DIRECTIVES } from '@angular/router';
+import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { PopularBlogs } from './popularBlogs/index';
 import { BlogDetail } from './detail/index';
 import { BlogsList } from './list/index';
@@ -10,12 +10,15 @@ import { BlogsList } from './list/index';
     directives: [ PopularBlogs, ROUTER_DIRECTIVES ]
 })
 
-@Routes([
+@RouteConfig([
     {
-        path: '',
-        component: BlogsList
+        path: '/',
+        name: 'BlogsList',
+        component: BlogsList,
+        useAsDefault: true
     }, {
         path: '/:id',
+        name: 'BlogDetail',
         component: BlogDetail
     }
 ])

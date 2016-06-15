@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'sign-in',
     templateUrl: 'src/components/signin/index.html',
-    directives: [ NgIf ],
-    providers: [ AuthService ]
+    directives: [ NgIf ]
 })
 
 export class SignIn {
@@ -25,7 +24,7 @@ export class SignIn {
         .then(
             function() {
                 // Authenticate successful.
-                self.router.navigate(['admin']);
+                self.router.navigate(['/Admin']);
             },
             function(error) {
                 // Authenticate fail.

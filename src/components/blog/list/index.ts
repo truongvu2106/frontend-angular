@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({

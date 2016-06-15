@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_DIRECTIVES, RouteSegment, RouteTree } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({
