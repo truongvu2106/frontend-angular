@@ -8,7 +8,6 @@ import { BlogService } from '../../../services/blog.service';
     providers: [ BlogService ]
 })
 
-
 export class BlogDetail implements OnActivate {
     blogDetail = {};
     constructor(private blogService: BlogService, private params: RouteParams) {

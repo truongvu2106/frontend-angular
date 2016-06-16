@@ -28,9 +28,8 @@
             <li><a href="#">Google</a></li>
           </ul>
         </li>
-        <li class="dropdown" *ngIf="authenticated">
-          Hello You! |
-          <span (click)="logout()">Logout</span>
+        <li *ngIf="authenticated">
+          <a href="#" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

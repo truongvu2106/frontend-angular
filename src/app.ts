@@ -51,7 +51,7 @@ import { Admin } from './components/admin/index';
         component: SignIn
     },
     {
-        path: '/admin',
+        path: '/admin/...',
         name: 'Admin',
         component: Admin
     }

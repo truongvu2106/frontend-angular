@@ -9,7 +9,6 @@ import { BlogService } from '../../../services/blog.service';
     providers: [ BlogService ]
 })
 
-
 export class PopularBlogs implements OnInit {
     blogs = [];
 

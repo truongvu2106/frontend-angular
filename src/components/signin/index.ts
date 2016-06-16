@@ -16,6 +16,9 @@ export class SignIn {
         console.info('Sign In Component Mounted Successfully');
         this.credentials = {};
         this.signInError = '';
+        if (this.authService.authenticated()) {
+            this.router.navigate(['/Home']);
+        }
     }
 
     signIn = function() {
