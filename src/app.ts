@@ -2,7 +2,7 @@ import { Component, provide, ComponentRef } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, CanActivate } from '@angular/router-deprecated';
-import { LocationStrategy, PathLocationStrategy, Location } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, Location } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 // Add the RxJS Observable operators we need in this app.
 import './rxjs-operators';
@@ -68,7 +68,7 @@ bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     MODAL_BROWSER_PROVIDERS,
     API,
-    provide(LocationStrategy, { useClass: PathLocationStrategy })
+    provide(LocationStrategy, { useClass: HashLocationStrategy })
 ])
 .then((appRef: ComponentRef<any>) => {
     // store a reference to the application injector

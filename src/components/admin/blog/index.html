@@ -1,13 +1,24 @@
-<div id="blog" class="col-sm-12" *ngFor="let item of blogs; let i = index">
-    <a class="mn-title">{{item.title}}</a>
-    <p class="text-right"><small>{{item.createdOnDate}}</small></p>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-            <img class="img-responsive mn-image" src="{{item.thumbnail}}"/>
-        </div>
-        <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
-            <p>{{item.summary}}</p>
-        </div>
+<div id="blog" class="col-sm-12">
+    <div class="menu-control btn-toolbar text-center" role="toolbar">
+        <button type="button" class="btn btn-sm btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-danger pull-right">
+            <i class="glyphicon glyphicon-trash"></i>
+        </button>
     </div>
     <hr>
+    <div *ngFor="let item of blogs; let i = index">
+        <a class="mn-title">{{item.title}}</a>
+        <p class="text-right"><small>{{item.createdOnDate}}</small></p>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+                <img class="img-responsive mn-image" src="{{item.thumbnail}}"/>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
+                <p>{{item.summary}}</p>
+            </div>
+        </div>
+        <hr>
+    </div>
 </div>

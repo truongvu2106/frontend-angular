@@ -2,13 +2,38 @@ var gulp = require('gulp');
     // rename = require('gulp-rename'),
     // traceur = require('gulp-traceur'),
     // webserver = require('gulp-webserver');
+var del = require('del');
+var tsc = require('gulp-typescript');
+var tsProject = tsc.createProject("tsconfig.json");
+// var tscConfig = require('./tsconfig.json');
+
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
 var merge = require('merge-stream');
 
+// clean the contents of the distribution directory
+gulp.task('clean', function () {
+  return del(['dist']);
+});
+
+gulp.task('less', function () {
+  var lessStream = gulp.src('./less/**/*.less')
+    .pipe(less())
+    .pipe(concat('./less/styles.less'));
+
+  return merge(lessStream)
+    .pipe(concat('styles.css'))
+    .pipe(gulp.dest('dist/styles'));
+});
+
+gulp.task('copy', function () {
+  return gulp.src([ './**', '!src/**/*.ts' ]) /* Glob required here. */
+    .pipe(gulp.dest("dist"));
+});
+
 // run init tasks
-gulp.task('default', [ 'less' ]);
+gulp.task('default', [ 'clean', 'less', 'copy' ]);
 
 // // run development task
 // gulp.task('dev', ['watch', 'serve']);
@@ -80,15 +105,3 @@ gulp.task('default', [ 'less' ]);
 //   return gulp.src('src/**/*.css')
 //     .pipe(gulp.dest('build'))
 // });
-
-// compile less
-gulp.task('less', function () {
-  var lessStream = gulp.src('./less/**/*.less')
-    .pipe(less())
-    .pipe(concat('./less/styles.less'));
-
-  return merge(lessStream)
-        .pipe(concat('styles.css'))
-        .pipe(gulp.dest('./styles'));
-});
-

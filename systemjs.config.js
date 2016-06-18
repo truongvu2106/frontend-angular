@@ -25,12 +25,21 @@
             defaultExtension: 'js'
         }
     };
-    var packageNames = ['@angular/common', '@angular/compiler', '@angular/core',
-        '@angular/http', '@angular/platform-browser',
-        '@angular/platform-browser-dynamic', '@angular/router',
-        '@angular/router-deprecated', '@angular/testing', '@angular/upgrade',
-        'angular2-modal', 'angular2-modal/platform-browser',
-        'angular2-modal/plugins/bootstrap'];
+    var packageNames = [
+        '@angular/core',
+        '@angular/http',
+        '@angular/compiler',
+        '@angular/platform-browser-dynamic',
+        '@angular/platform-browser',
+        '@angular/router',
+        '@angular/router-deprecated',
+        '@angular/common',
+        '@angular/testing',
+        '@angular/upgrade',
+        'angular2-modal',
+        'angular2-modal/platform-browser',
+        'angular2-modal/plugins/bootstrap'
+    ];
     // add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
     packageNames.forEach(function(pkgName) {
         packages[pkgName] = {
