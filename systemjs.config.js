@@ -25,28 +25,51 @@
             defaultExtension: 'js'
         }
     };
+
+    var ngPackageNames = [
+        'common',
+        'compiler',
+        'core',
+        'forms',
+        'http',
+        'platform-browser',
+        'platform-browser-dynamic',
+        'router',
+        'router-deprecated',
+        'upgrade'
+    ];
+    // Individual files (~300 requests):
+    function packIndex(pkgName) {
+        packages['@angular/' + pkgName] = {
+            main: 'index.js',
+            defaultExtension: 'js'
+        };
+    }
+    // Bundled (~40 requests):
+    function packUmd(pkgName) {
+        packages['@angular/' + pkgName] = {
+            main: '/bundles/' + pkgName + '.umd.js',
+            defaultExtension: 'js'
+        };
+    }
+    // Most environments should use UMD; some (Karma) need the individual index files
+    // var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
+    var setPackageConfig = packUmd;
+    // Add package entries for angular packages
+    ngPackageNames.forEach(setPackageConfig);
+
     var packageNames = [
-        '@angular/core',
-        '@angular/http',
-        '@angular/compiler',
-        '@angular/platform-browser-dynamic',
-        '@angular/platform-browser',
-        '@angular/router',
-        '@angular/router-deprecated',
-        '@angular/common',
-        '@angular/testing',
-        '@angular/upgrade',
         'angular2-modal',
         'angular2-modal/platform-browser',
         'angular2-modal/plugins/bootstrap'
     ];
-    // add package entries for angular packages in the form '@angular/common': { main: 'index.js', defaultExtension: 'js' }
     packageNames.forEach(function(pkgName) {
         packages[pkgName] = {
             main: 'index.js',
             defaultExtension: 'js'
         };
     });
+
     var config = {
         map: map,
         packages: packages

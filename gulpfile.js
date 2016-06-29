@@ -24,7 +24,7 @@ gulp.task('less', function () {
 
   return merge(lessStream)
     .pipe(concat('styles.css'))
-    .pipe(gulp.dest('dist/styles'));
+    .pipe(gulp.dest('styles'));
 });
 
 gulp.task('copy', function () {
