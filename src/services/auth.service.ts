@@ -7,9 +7,8 @@ import { API } from './api.service';
 
 @Injectable()
 export class AuthService {
-    public isLoggedIn: EventEmitter<boolean>;
+    public isLoggedIn: EventEmitter<any> = new EventEmitter();
     constructor(private api: API, private router: Router) {
-        this.isLoggedIn = new EventEmitter();
     }
 
     /* Private */

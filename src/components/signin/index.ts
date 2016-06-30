@@ -17,7 +17,7 @@ export class SignIn {
         this.credentials = {};
         this.signInError = '';
         if (this.authService.authenticated()) {
-            this.router.navigate(['/Home']);
+            this.router.navigate(['/home']);
         }
     }
 
@@ -27,7 +27,7 @@ export class SignIn {
         .then(
             function() {
                 // Authenticate successful.
-                self.router.navigate(['/Admin']);
+                self.router.navigate(['/admin']);
             },
             function(error) {
                 // Authenticate fail.

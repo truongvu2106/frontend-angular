@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { BlogService } from '../../../services/blog.service';
     providers: [BlogService]
 })
 
-export class BlogManagement implements OnActivate {
+export class BlogManagement implements OnInit {
     blogs = [];
     constructor(private blogService: BlogService) {
         console.info('Blogs Management Component Mounted Successfully');
     }
 
-    routerOnActivate() {
+    ngOnInit() {
         this.blogService.getBlogs()
             .then((blogs) => { this.blogs = blogs; })
             .catch((err) => { console.error(err); });

@@ -16,16 +16,6 @@ export class API {
     post(uri, data) {
         data = JSON.stringify(data);
         var self = this;
-        // return new Promise(function(resolve, reject) {
-        //     self.http.post(self.config.apiURI + uri, data, self.requestOptions)
-        //         .subscribe(
-        //             function(response: Response) {
-        //                 resolve(response.json());
-        //             }, function(error) {
-        //                 reject(error);
-        //             }
-        //         );
-        // });
         return self.http.post(self.config.apiURI + uri, data, self.requestOptions)
             .toPromise()
             .then(self.extractData)
