@@ -1,27 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { PopularBlogs } from './popularBlogs/index';
 import { BlogDetail } from './detail/index';
 import { BlogsList } from './list/index';
+
+// const BlogRoutes: RouterConfig = [
+//   { path: '',  component: BlogsList },
+//   { path: ':id', component: BlogDetail }
+// ];
 
 @Component({
     selector: 'blog',
     templateUrl: 'src/components/blog/index.html',
     directives: [ PopularBlogs, ROUTER_DIRECTIVES ]
 })
-
-@RouteConfig([
-    {
-        path: '/',
-        name: 'BlogsList',
-        component: BlogsList,
-        useAsDefault: true
-    }, {
-        path: '/:id',
-        name: 'BlogDetail',
-        component: BlogDetail
-    }
-])
 
 export class Blog {
 

@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { Cookie } from 'ng2-cookies';
 import { API } from './api.service';
 

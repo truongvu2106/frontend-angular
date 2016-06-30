@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { OnActivate, Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { BlogService } from '../../../services/blog.service';
     providers: [ BlogService ]
 })
 
-export class BlogsList implements OnActivate {
+export class BlogsList implements OnInit, OnDestroy {
     blogs = [];
     constructor(private blogService: BlogService) {
         console.info('Blogs List Component Mounted Successfully');
@@ -20,6 +20,16 @@ export class BlogsList implements OnActivate {
         this.blogService.getBlogs()
             .then((blogs) => { this.blogs = blogs; })
             .catch((err) => { console.error(err); });
+    }
+
+    ngOnInit() {
+        this.blogService.getBlogs()
+            .then((blogs) => { this.blogs = blogs; })
+            .catch((err) => { console.error(err); });
+    }
+
+    ngOnDestroy() {
+    //     this.sub.unsubscribe();
     }
 
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-import { Router } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 
@@ -23,7 +22,7 @@ export class Header {
     logout() {
         this.authService.deauthenticate();
         this.authenticated = false;
-        this.router.navigate(['/Home']);
+        this.router.navigate(['/home']);
     }
 
 }

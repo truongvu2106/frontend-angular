@@ -20,7 +20,7 @@ import { GalleryManagement } from './gallery/index';
 
 @RouteConfig([
     {
-        path: '/blog-management',
+        path: '/blog-management/...',
         name: 'BlogManagement',
         component: BlogManagement,
         useAsDefault: true

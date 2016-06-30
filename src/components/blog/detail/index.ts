@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouteParams, Router, OnActivate } from '@angular/router-deprecated';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BlogService } from '../../../services/blog.service';
 
 @Component({
@@ -8,20 +8,25 @@ import { BlogService } from '../../../services/blog.service';
     providers: [ BlogService ]
 })
 
-export class BlogDetail implements OnActivate {
+export class BlogDetail implements OnInit, OnDestroy {
     blogDetail = {};
-    constructor(private blogService: BlogService, private params: RouteParams) {
+    private sub: any;
+    constructor(private blogService: BlogService, private route: ActivatedRoute) {
         console.info('Blog Detail Component Mounted Successfully');
     }
 
-    routerOnActivate() {
-    //     let id = curr.getParam('id');
-        let id = this.params.get('id');
-        this.blogService.getBlog(id)
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            let id = +params['id'];
+            this.blogService.getBlog(id)
             .then((blogDetail) => {
                 this.blogDetail = blogDetail;
             })
             .catch((err) => { console.error(err); });
+        });
     }
 
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 }
