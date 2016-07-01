@@ -17,7 +17,7 @@
 #admin .sidebar a {
   color: #777;
 }
-#admin .sidebar .router-link-active {
+#admin .sidebar .active {
   background-color: #eee;
   color: #777;
 }
@@ -29,9 +29,9 @@
 body {
   font-family: Arial, Tahoma, Verdana, serif;
 }
-#mn-app .navbar-default .navbar-nav > li > a.router-link-active,
-#mn-app .navbar-default .navbar-nav > li > a.router-link-active:focus,
-#mn-app .navbar-default .navbar-nav > li > a.router-link-active:hover {
+#mn-app .navbar-default .navbar-nav > li > a.active,
+#mn-app .navbar-default .navbar-nav > li > a.active:focus,
+#mn-app .navbar-default .navbar-nav > li > a.active:hover {
   background-color: #ededed;
 }
 #mn-app .mn-padding-5 {
