@@ -8,6 +8,11 @@ export class BlogService {
     getBlog(id) {
         return Promise.resolve(items[id - 1]);
     }
+
+    createBlog(blog) {
+        items.push(blog);
+        return Promise.resolve();
+    }
 }
 
 // mock data

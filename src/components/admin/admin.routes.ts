@@ -3,6 +3,7 @@ import { Admin } from './index';
 import { AuthGuard } from '../../auth.guard';
 
 import { BlogManagement } from './blog/index';
+
 import { GalleryManagement } from './gallery/index';
 
 export const AdminRoutes: RouterConfig = [{
@@ -16,6 +17,10 @@ export const AdminRoutes: RouterConfig = [{
         },
         {
             path: 'blog-management',
+            component: BlogManagement
+        },
+        {
+            path: 'blog-management/:action',
             component: BlogManagement
         },
         {

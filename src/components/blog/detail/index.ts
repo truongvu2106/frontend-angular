@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BlogService } from '../../../services/blog.service';
 
+declare var $: any;
+
 @Component({
     selector: 'blog-detail',
     templateUrl: 'src/components/blog/detail/index.html',
@@ -17,6 +19,7 @@ export class BlogDetail implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
+            $('body').scrollTop(0);
             let id = +params['id'];
             this.blogService.getBlog(id)
             .then((blogDetail) => {

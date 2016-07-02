@@ -63,6 +63,9 @@ body {
   height: 100px;
   width: 130px;
 }
+#blog textarea {
+  width: 100%;
+}
 
 #mn-gallery .mn-gallery-img {
   filter: gray;

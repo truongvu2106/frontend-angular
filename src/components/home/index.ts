@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-declare var $: any;
-declare var CKEDITOR: any;
 
 @Component({
   selector: 'home',
@@ -14,7 +12,6 @@ export class Home implements OnInit {
   }
 
   ngOnInit() {
-      CKEDITOR.replace('editor1');
   }
 
 }

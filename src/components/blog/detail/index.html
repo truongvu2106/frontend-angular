@@ -2,6 +2,6 @@
     <div class="mn-title" href="#">{{blogDetail.title}}</div>
     <p><small>{{blogDetail.createdOnDate}}</small></p>
     <div class="mn-content">
-         <p>{{blogDetail.content}}</p>
+        <div [innerHTML]="blogDetail.content"></div>
     </div>
 </div>

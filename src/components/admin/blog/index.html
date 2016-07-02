@@ -1,24 +1,65 @@
 <div id="blog" class="col-sm-12">
-    <div class="menu-control btn-toolbar text-center" role="toolbar">
-        <button type="button" class="btn btn-sm btn-primary">
-            <i class="glyphicon glyphicon-plus"></i>
-        </button>
-        <button type="button" class="btn btn-sm btn-danger pull-right">
-            <i class="glyphicon glyphicon-trash"></i>
-        </button>
-    </div>
-    <hr>
-    <div *ngFor="let item of blogs; let i = index">
-        <a class="mn-title">{{item.title}}</a>
-        <p class="text-right"><small>{{item.createdOnDate}}</small></p>
-        <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-                <img class="img-responsive mn-image" src="{{item.thumbnail}}"/>
-            </div>
-            <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
-                <p>{{item.summary}}</p>
-            </div>
+    <!-- View list blogs -->
+    <div *ngIf="!action">
+        <div class="menu-control btn-toolbar text-center" role="toolbar">
+            <a [routerLink]="['/admin/blog-management', 'add']" class="btn btn-sm btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+            <a [routerLink]="['/admin/blog-management', 'delete']" class="btn btn-sm btn-danger pull-right">
+                <i class="glyphicon glyphicon-trash"></i>
+            </a>
         </div>
         <hr>
+        <div *ngFor="let item of blogs; let i = index">
+            <a class="mn-title">{{item.title}}</a>
+            <p class="text-right"><small>{{item.createdOnDate}}</small></p>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+                    <img class="img-responsive mn-image" src="{{item.thumbnail}}"/>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
+                    <p>{{item.summary}}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <!-- Add a blog -->
+    <div *ngIf="action === 'add'">
+        <form name="blogForm" class="form">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text"
+                    id="title"
+                    name="title"
+                    [(ngModel)]="blog.title"
+                    class="form-control"
+                    required />
+            </div>
+
+            <div class="form-group">
+                <label for="avatar">Avatar</label>
+                <input type="text"
+                    id="avatar"
+                    name="avatar"
+                    [(ngModel)]="blog.thumbnail"
+                    class="form-control"/>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="content"
+                    id="content"
+                    [(ngModel)]="blog.content"
+                    rows="10"
+                    cols="80">
+                </textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="button" class="btn btn-default" (click)="cancel($event)">Cancel</button>
+                <button type="submit" class="btn btn-primary" (click)="submit($event)">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
