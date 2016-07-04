@@ -66,6 +66,10 @@ body {
 #blog textarea {
   width: 100%;
 }
+#blog .mn-control-group-btn a {
+  margin-left: 15px;
+  text-decoration: none;
+}
 
 #mn-gallery .mn-gallery-img {
   filter: gray;

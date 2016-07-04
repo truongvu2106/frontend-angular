@@ -2,11 +2,10 @@ import { Component, provide, ComponentRef } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { MODAL_BROWSER_PROVIDERS } from 'angular2-modal/platform-browser';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { LocationStrategy, HashLocationStrategy, Location } from '@angular/common';
+import { LocationStrategy, PathLocationStrategy, Location, APP_BASE_HREF } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
 // Add the RxJS Observable operators we need in this app.
 import './rxjs-operators';
-// import { appInjector } from './app-injector';
 
 import { API } from './services/api.service';
 import { AuthService } from './services/auth.service';
@@ -37,10 +36,6 @@ bootstrap(AppComponent, [
     HTTP_PROVIDERS,
     MODAL_BROWSER_PROVIDERS,
     API,
-    provide(LocationStrategy, { useClass: HashLocationStrategy })
+    provide(LocationStrategy, { useClass: PathLocationStrategy })
 ])
-// .then((appRef: ComponentRef<any>) => {
-//     // store a reference to the application injector
-//     appInjector(appRef.injector);
-// })
 .catch(err => console.error(err));;

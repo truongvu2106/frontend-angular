@@ -8,7 +8,8 @@ import { AdminRoutes } from './components/admin/admin.routes';
 const routes: RouterConfig = [
     {
         path: '',
-        component: Home
+        redirectTo: 'home',
+        pathMatch: 'full'
     },
     {
         path: 'home',

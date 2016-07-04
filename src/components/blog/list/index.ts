@@ -11,7 +11,7 @@ import { BlogService } from '../../../services/blog.service';
 })
 
 export class BlogsList implements OnInit, OnDestroy {
-    blogs = [];
+    blogs: any = [];
     constructor(private blogService: BlogService) {
         console.info('Blogs List Component Mounted Successfully');
     }

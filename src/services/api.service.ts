@@ -11,7 +11,11 @@ export class API {
         this.requestOptions = new RequestOptions({ headers: headers });
     }
     get(uri) {
-        return this.http.get(this.config.apiURI + uri);
+        var self = this;
+        return self.http.get(self.config.apiURI + uri)
+            .toPromise()
+            .then(self.extractData)
+            .catch(self.handleError);
     }
     post(uri, data) {
         data = JSON.stringify(data);
@@ -22,11 +26,19 @@ export class API {
             .catch(self.handleError);
     }
     put(uri, data) {
+        var self = this;
         data = JSON.stringify(data);
-        return this.http.put(this.config.apiURI + uri, data, this.requestOptions);
+        return self.http.put(self.config.apiURI + uri, data, self.requestOptions)
+            .toPromise()
+            .then(self.extractData)
+            .catch(self.handleError);
     }
     delete(uri) {
-        return this.http.delete(this.config.apiURI + uri);
+        var self = this;
+        return self.http.delete(self.config.apiURI + uri)
+            .toPromise()
+            .then(self.extractData)
+            .catch(self.handleError);
     }
     private extractData(res: Response) {
         let body = res.json();

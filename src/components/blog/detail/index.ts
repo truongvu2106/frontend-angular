@@ -20,7 +20,7 @@ export class BlogDetail implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             $('body').scrollTop(0);
-            let id = +params['id'];
+            let id = params['id'];
             this.blogService.getBlog(id)
             .then((blogDetail) => {
                 this.blogDetail = blogDetail;

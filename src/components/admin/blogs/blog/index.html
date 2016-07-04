@@ -1,31 +1,6 @@
 <div id="blog" class="col-sm-12">
-    <!-- View list blogs -->
-    <div *ngIf="!action">
-        <div class="menu-control btn-toolbar text-center" role="toolbar">
-            <a [routerLink]="['/admin/blog-management', 'add']" class="btn btn-sm btn-primary">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-            <a [routerLink]="['/admin/blog-management', 'delete']" class="btn btn-sm btn-danger pull-right">
-                <i class="glyphicon glyphicon-trash"></i>
-            </a>
-        </div>
-        <hr>
-        <div *ngFor="let item of blogs; let i = index">
-            <a class="mn-title">{{item.title}}</a>
-            <p class="text-right"><small>{{item.createdOnDate}}</small></p>
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-                    <img class="img-responsive mn-image" src="{{item.thumbnail}}"/>
-                </div>
-                <div class="col-xs-8 col-sm-8 col-md-9 col-lg-10">
-                    <p>{{item.summary}}</p>
-                </div>
-            </div>
-            <hr>
-        </div>
-    </div>
     <!-- Add a blog -->
-    <div *ngIf="action === 'add'">
+    <div *ngIf="action === 'add' || action === 'edit'">
         <form name="blogForm" class="form">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -61,5 +36,13 @@
                 <button type="submit" class="btn btn-primary" (click)="submit($event)">Submit</button>
             </div>
         </form>
+    </div>
+
+    <div id="blog-detail" *ngIf="action === 'view'">
+        <div class="mn-title">{{blog.title}}</div>
+        <p><small>{{blog.createdOnDate}}</small></p>
+        <div class="mn-content">
+            <div [innerHTML]="blog.content"></div>
+        </div>
     </div>
 </div>

@@ -10,7 +10,7 @@ import { BlogService } from '../../../services/blog.service';
 })
 
 export class PopularBlogs implements OnInit {
-    blogs = [];
+    blogs: any = [];
 
     constructor(private blogService: BlogService) {
         console.info('Popular Blogs Component Mounted Successfully');
